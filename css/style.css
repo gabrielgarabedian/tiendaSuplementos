@@ -1,0 +1,38 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+main {background-color: whitesmoke;}
+
+.contenedor{
+    width: 100%;
+    height: 30%;
+    position: relative;
+}
+
+.bottom{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    width: 100%;
+    color: coral;
+    padding: 30px;
+    font-size: 40px;
+
+}
+
+.left{
+    cursor: pointer;
+}
+
+.right{
+    cursor: pointer;
+}
+
+.carrusel {
+    width: 100%;
+}
