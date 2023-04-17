@@ -1,4 +1,4 @@
-class Products{
+/*class Products{
     constructor(id,name,description,price,stock,img,alt){
         this.id= id
         this.name= name
@@ -11,19 +11,6 @@ class Products{
     }
         
 }
-        
-/*borrar luego
-const productsList =[
-    new Products(1,"BCAA 228gr","BCAA power instant de la marca HachSport, 60 servicios", 4500,10,"../assets/bcaa_power.webp","BCAA HardSport"),
-    new Products(2,"MUTANT MASS 1.5kg","Ganador de peso de la marca StarNutrition, 100 servicios", 6500,15,"../assets/mutant.webp","Mutant SN"),
-    new Products(3,"PUMP 285g","Pre-entreno de la marca StarNutrition, 30 servicios", 2500,23,"../assets/preentreno.webp","PUMP SN"),
-    new Products(4,"Whey Protein WOMEN 500g","Proteina para mujer de la marca Ultra Tech, 50 servicios", 8500,12,"../assets/proteinultra.webp","Mujer ultra"),
-    new Products(5,"HYDROXY MAX ENA","Quemador de grasa de la marca ENA, 100 servicios", 7300,5,"../assets/reductor.webp","quemador ENA"),
-    new Products(6,"ANTIOXIDANTE comprimidos","Antioxidante plus de la marca Vivatech, 30 comprimidos", 900,50,"../assets/vita.webp","Antioxidante"),
-    new Products(7,"ENACCION","Vitaminas de la marca StarNutrition, 60 capsulas", 5500,8,"../assets/vitamina.webp","Vitaminas"),
-    new Products(8,"Whey Protein Platinum","Proteina isolada de la marca StarNutrition, 30 servicios", 7200,19,"../assets/whey1.webp","proteina SN"),
-    new Products(9,"Whey Protein Alto Rendimiento","Proteina 7900 de alto rendimiento de la marca Gentech, 60 servicios", 8900,15,"../assets/wheyProte.webp","gentech"),
-]*/
 
 class ControllerProductos{
     constructor(){
@@ -53,8 +40,8 @@ class ControllerProductos{
         return acum
             
     }*/
-        
-    mostrar(container_list){
+    /*    
+    mostrar(){
         this.productList.map(product => {
             container_list.innerHTML += `
             <div class="card border-warning" style="width: 18rem;">
@@ -69,6 +56,35 @@ class ControllerProductos{
         })
         
     }
+
+    visualizar(){
+        this.productList.map(product =>{
+            const btnUp= document.getElementById(`Art-${product.id}`)
+            btnUp.addEventListener("click", ()=>{
+        
+                listCompra.push(product)
+                saveLocal()
+        
+                    container_listCompra.innerHTML +=`
+                        <div class="card mb-3" style="max-width: 540px;">
+                            <div class="row g-0">
+                                <div class="col-md-4">
+                                    <img src="${product.img}" class="img-fluid rounded-start" alt="${product.alt}">
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <h5 class="card-title">${product.name}</h5>
+                                        <p class="card-text"><small class="text-body-secondary">Unidades: ${product.cantidad}</small></p>
+                                        <p class="card-text"><small class="text-body-secondary">$${product.price}</small></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>`
+                    
+                //})
+            })
+        })
+    }
         
     search(id){
         return this.productList.find(el => el.id == id)
@@ -76,21 +92,35 @@ class ControllerProductos{
         
 }
 
+/*class CarritoController {
+    constructor(){
+        this.listCompra = JSON.parse(localStorage.getItem ("listCompra")) || []
+
+    }
+}
+
 const controladorProductos= new ControllerProductos()
 controladorProductos.loader()
 
-let listCompra;
+
+let listCompra = JSON.parse(localStorage.getItem ("listCompra")) || []
 
 //DOM de tienda
 const container_list = document.getElementById("container_list")
-const container_listCompras = document.getElementById("container_listCompras")
+const container_listCompra = document.getElementById("container_listCompra")
 
-controladorProductos.mostrar(container_list)
+//localstorage
+const saveLocal= () =>{
+    localStorage.setItem("listCompra",JSON.stringify(listCompra));
+}
 
-/*if(localStorage.getItem("listCompra")){
-    let listCompraJSON = localStorage.getItem("listCompra")
-    listCompra = JSON.parse(listCompraJSON)
 
+controladorProductos.mostrar()
+controladorProductos.visualizar()
+
+//const controladorCarrito= new CarritoController()
+
+if("listCompra"){
     listCompra.map(product => {
         container_listCompra.innerHTML +=`
             <div class="card mb-3" style="max-width: 540px;">
@@ -111,38 +141,11 @@ controladorProductos.mostrar(container_list)
 
 }else{
     listCompra = []
-}
+}*/
 
-/*se muestran
-productsList.map(product => {
-    container_list.innerHTML += `
-    <div class="card border-warning" style="width: 18rem;">
-        <img src="${product.img}" class="card-img-top" alt="${product.alt}">
-        <div class="card-body">
-            <h5 class="card-title">${product.name}</h5>
-            <p class="card-text">${product.description}</p>
-            <p class="card-text">Precio $ ${product.price}</p>
-            <a href="#" id="Art-${product.id}" class="btn btn-danger container justify-content-center " style=" background-color: rgb(252, 59, 1)">Agregar al carrito</a>
-        </div>
-    </div> `
-})*/
 
-/*productsList.map(product =>{
-    const btnUp= document.getElementById(`Art-${product.id}`)
-    btnUp.addEventListener("click", ()=>{
 
-        listCompra.push(product)
-
-        let listCompraJSON = JSON.stringify(listCompra)
-        localStorage.setItem("listCompra",listCompraJSON)
-
-        container_listCompra.innerHTML =""
-
-        
-    })
-
-})
-
+///hasta aca
 /*class ControllerProductos{
     constructor(){
         this.listProductos = []
@@ -298,4 +301,144 @@ alert("Los precios de los productos se actualizaran \npor una suba en de la tasa
                 
 
 */
+
+//prueba 
+class Products{
+    constructor(id,name,description,price,stock,img,alt){
+        this.id= id
+        this.name= name
+        this.description= description
+        this.price= price
+        this.stock= stock
+        this.cantidad= 1
+        this.img= img 
+        this.alt= alt
+    }
+        
+}
+
+class ControllerProductos{
+    constructor(){
+        this.productList = []
+        this.container_list = document.getElementById("container_list")
+    }
+            
+    loader() {
+        this.productList= [
+            new Products(1,"BCAA 228gr","BCAA power instant de la marca HachSport, 60 servicios", 4500,10,"../assets/bcaa_power.webp","BCAA HardSport"),
+            new Products(2,"MUTANT MASS 1.5kg","Ganador de peso de la marca StarNutrition, 100 servicios", 6500,15,"../assets/mutant.webp","Mutant SN"),
+            new Products(3,"PUMP 285g","Pre-entreno de la marca StarNutrition, 30 servicios", 2500,23,"../assets/preentreno.webp","PUMP SN"),
+            new Products(4,"Whey Protein WOMEN 500g","Proteina para mujer de la marca Ultra Tech, 50 servicios", 8500,12,"../assets/proteinultra.webp","Mujer ultra"),
+            new Products(5,"HYDROXY MAX ENA","Quemador de grasa de la marca ENA, 100 servicios", 7300,5,"../assets/reductor.webp","quemador ENA"),
+            new Products(6,"ANTIOXIDANTE comprimidos","Antioxidante plus de la marca Vivatech, 30 comprimidos", 900,50,"../assets/vita.webp","Antioxidante"),
+            new Products(7,"ENACCION","Vitaminas de la marca StarNutrition, 60 capsulas", 5500,8,"../assets/vitamina.webp","Vitaminas"),
+            new Products(8,"Whey Protein Platinum","Proteina isolada de la marca StarNutrition, 30 servicios", 7200,19,"../assets/whey1.webp","proteina SN"),
+            new Products(9,"Whey Protein Alto Rendimiento","Proteina 7900 de alto rendimiento de la marca Gentech, 60 servicios", 8900,15,"../assets/wheyProte.webp","gentech"),
+        ]
+    }
+            
+        
+    mostrar(){
+        this.productList.map(product => {
+            this.container_list.innerHTML += `
+            <div class="card border-warning" style="width: 18rem;">
+                <img src="${product.img}" class="card-img-top" alt="${product.alt}">
+                <div class="card-body">
+                    <h5 class="card-title">${product.name}</h5>
+                    <p class="card-text">${product.description}</p>
+                    <p class="card-text">Precio $ ${product.price}</p>
+                    <a href="#" id="Art-${product.id}" class="btn btn-danger container justify-content-center " style=" background-color: rgb(252, 59, 1)">Agregar al carrito</a>
+                </div>
+            </div> `
+        })
+        
+    }
+
+    click(controladorCarrito){
+        this.productList.map(product =>{
+            const btnUp= document.getElementById(`Art-${product.id}`)
+            btnUp.addEventListener("click", ()=>{
+        
+                controladorCarrito.up(product)
+                controladorCarrito.saveStorage()
+                
+                controladorCarrito.agregado(container_listCompra)    
+            })
+        })
+
+
+    }
+        
+    search(id){
+        return this.productList.find(el => el.id == id)
+    }
+        
+}
+
+class CarritoController {
+    constructor(){
+        this.listCompra = []
+        this.container_listCompra = document.getElementById("container_listCompra")
+    }
+
+    up(product){
+        this.listCompra.push(product)
+    }
+
+    saveStorage(){
+        localStorage.setItem("listCompra",JSON.stringify(this.listCompra))
+    }
+
+    loading(){
+        this.listCompra = JSON.parse(localStorage.getItem ("listCompra")) || []
+
+    }
+
+    clear(){
+        this.container_listCompra.innerHTML = ""
+    }
+
+    agregado(){
+        this.clear()
+        this.listCompra.map(product => {
+        this.container_listCompra.innerHTML +=`
+                <div class="card mb-3" style="max-width: 540px;">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img src="${product.img}" class="img-fluid rounded-start" alt="${product.alt}">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">${product.name}</h5>
+                                <p class="card-text"><small class="text-body-secondary">Unidades: ${product.cantidad}</small></p>
+                                <p class="card-text"><small class="text-body-secondary">$${product.price}</small></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>`
+        })
+
+    }
+}
+
+const controladorProductos= new ControllerProductos()
+const controladorCarrito= new CarritoController()
+
+//carga los productos
+controladorProductos.loader()
+//muestra los productos
+controladorProductos.mostrar()
+//storage
+controladorCarrito.loading()
+//evento
+controladorProductos.click(controladorCarrito)
+
+
+if(localStorage.getItem("listCompra")){
+    controladorCarrito.loading()
+    controladorCarrito.agregado()
+
+}else{
+    listCompra = []
+}
 
