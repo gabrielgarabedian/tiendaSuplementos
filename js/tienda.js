@@ -303,6 +303,9 @@ alert("Los precios de los productos se actualizaran \npor una suba en de la tasa
 */
 
 //prueba 
+
+const cardCarrito = document.getElementById("container_listCompra")
+
 class Products{
     constructor(id,name,description,price,stock,img,alt){
         this.id= id
@@ -340,14 +343,15 @@ class ControllerProductos{
         
     mostrar(){
         this.productList.map(product => {
+            const {id,name,description,price,stock,img,alt} = product
             this.container_list.innerHTML += `
             <div class="card border-warning" style="width: 18rem;">
-                <img src="${product.img}" class="card-img-top" alt="${product.alt}">
+                <img src="${img}" class="card-img-top" alt="${alt}">
                 <div class="card-body">
-                    <h5 class="card-title">${product.name}</h5>
-                    <p class="card-text">${product.description}</p>
-                    <p class="card-text">Precio $ ${product.price}</p>
-                    <a href="#" id="Art-${product.id}" class="btn btn-danger container justify-content-center " style=" background-color: rgb(252, 59, 1)">Agregar al carrito</a>
+                    <h5 class="card-title">${name}</h5>
+                    <p class="card-text">${description}</p>
+                    <p class="card-text">Precio $ ${price}</p>
+                    <a href="#" id="Art-${id}" class="btn btn-danger container justify-content-center " style=" background-color: rgb(252, 59, 1)">Agregar al carrito</a>
                 </div>
             </div> `
         })
@@ -356,7 +360,8 @@ class ControllerProductos{
 
     click(controladorCarrito){
         this.productList.map(product =>{
-            const btnUp= document.getElementById(`Art-${product.id}`)
+            const {id} = product
+            const btnUp= document.getElementById(`Art-${id}`)
             btnUp.addEventListener("click", ()=>{
         
                 controladorCarrito.up(product)
@@ -385,6 +390,10 @@ class CarritoController {
         this.listCompra.push(product)
     }
 
+    down(product){
+        this.listCompra.pop(product)
+    }
+
     saveStorage(){
         localStorage.setItem("listCompra",JSON.stringify(this.listCompra))
     }
@@ -410,16 +419,45 @@ class CarritoController {
                         <div class="col-md-8">
                             <div class="card-body">
                                 <h5 class="card-title">${product.name}</h5>
-                                <p class="card-text"><small class="text-body-secondary">Unidades: ${product.cantidad}</small></p>
                                 <p class="card-text"><small class="text-body-secondary">$${product.price}</small></p>
+                                <p class="card-text"><small class="text-body-secondary">Unidades: ${product.cantidad}</small></p>
+                                <a href="#" id="Art-${product.id}" class="btn btn-danger container justify-content-center">Eliminar</a>
                             </div>
                         </div>
                     </div>
                 </div>`
         })
 
+
+
+        let eliminar = document.createElement ("button");
+        eliminar.innerText= "Vaciar carrito"
+        eliminar.className= "eliminar"
+
+        cardCarrito.append(eliminar)
+
+        
     }
+
+
+    /*clickRestar(){
+        this.listCompra.map(product =>{
+            const {id} = product
+            const btnRemove = document.getElementById(`Art-${id}`)
+            btnRemove.addEventListener("click", ()=>{
+                controladorCarrito.down(product)
+                controladorCarrito.agregado(container_listCompra)
+            })
+        })
+    }   */
 }
+
+/*function eliminarProducto(id) {
+    const idEliminado = id
+    listCompra = listCompra.filter((productos)=> product.id != idEliminado)
+    console.log(listCompra)
+}
+*/
 
 const controladorProductos= new ControllerProductos()
 const controladorCarrito= new CarritoController()
@@ -441,4 +479,3 @@ if(localStorage.getItem("listCompra")){
 }else{
     listCompra = []
 }
-
