@@ -306,7 +306,7 @@ alert("Los precios de los productos se actualizaran \npor una suba en de la tasa
 
 const cardCarrito = document.getElementById("container_listCompra")
 
-class Products{
+class Product{
     constructor(id,name,description,price,stock,img,alt){
         this.id= id
         this.name= name
@@ -328,15 +328,15 @@ class ControllerProductos{
             
     loader() {
         this.productList= [
-            new Products(1,"BCAA 228gr","BCAA power instant de la marca HachSport, 60 servicios", 4500,10,"../assets/bcaa_power.webp","BCAA HardSport"),
-            new Products(2,"MUTANT MASS 1.5kg","Ganador de peso de la marca StarNutrition, 100 servicios", 6500,15,"../assets/mutant.webp","Mutant SN"),
-            new Products(3,"PUMP 285g","Pre-entreno de la marca StarNutrition, 30 servicios", 2500,23,"../assets/preentreno.webp","PUMP SN"),
-            new Products(4,"Whey Protein WOMEN 500g","Proteina para mujer de la marca Ultra Tech, 50 servicios", 8500,12,"../assets/proteinultra.webp","Mujer ultra"),
-            new Products(5,"HYDROXY MAX ENA","Quemador de grasa de la marca ENA, 100 servicios", 7300,5,"../assets/reductor.webp","quemador ENA"),
-            new Products(6,"ANTIOXIDANTE comprimidos","Antioxidante plus de la marca Vivatech, 30 comprimidos", 900,50,"../assets/vita.webp","Antioxidante"),
-            new Products(7,"ENACCION","Vitaminas de la marca StarNutrition, 60 capsulas", 5500,8,"../assets/vitamina.webp","Vitaminas"),
-            new Products(8,"Whey Protein Platinum","Proteina isolada de la marca StarNutrition, 30 servicios", 7200,19,"../assets/whey1.webp","proteina SN"),
-            new Products(9,"Whey Protein Alto Rendimiento","Proteina 7900 de alto rendimiento de la marca Gentech, 60 servicios", 8900,15,"../assets/wheyProte.webp","gentech"),
+            new Product(1,"BCAA 228gr","BCAA power instant de la marca HachSport, 60 servicios", 4500,10,"../assets/bcaa_power.webp","BCAA HardSport"),
+            new Product(2,"MUTANT MASS 1.5kg","Ganador de peso de la marca StarNutrition, 100 servicios", 6500,15,"../assets/mutant.webp","Mutant SN"),
+            new Product(3,"PUMP 285g","Pre-entreno de la marca StarNutrition, 30 servicios", 2500,23,"../assets/preentreno.webp","PUMP SN"),
+            new Product(4,"Whey Protein WOMEN 500g","Proteina para mujer de la marca Ultra Tech, 50 servicios", 8500,12,"../assets/proteinultra.webp","Mujer ultra"),
+            new Product(5,"HYDROXY MAX ENA","Quemador de grasa de la marca ENA, 100 servicios", 7300,5,"../assets/reductor.webp","quemador ENA"),
+            new Product(6,"ANTIOXIDANTE comprimidos","Antioxidante plus de la marca Vivatech, 30 comprimidos", 900,50,"../assets/vita.webp","Antioxidante"),
+            new Product(7,"ENACCION","Vitaminas de la marca StarNutrition, 60 capsulas", 5500,8,"../assets/vitamina.webp","Vitaminas"),
+            new Product(8,"Whey Protein Platinum","Proteina isolada de la marca StarNutrition, 30 servicios", 7200,19,"../assets/whey1.webp","proteina SN"),
+            new Product(9,"Whey Protein Alto Rendimiento","Proteina 7900 de alto rendimiento de la marca Gentech, 60 servicios", 8900,15,"../assets/wheyProte.webp","gentech"),
         ]
     }
             
@@ -421,35 +421,20 @@ class CarritoController {
                                 <h5 class="card-title">${product.name}</h5>
                                 <p class="card-text"><small class="text-body-secondary">$${product.price}</small></p>
                                 <p class="card-text"><small class="text-body-secondary">Unidades: ${product.cantidad}</small></p>
-                                <a href="#" id="Art-${product.id}" class="btn btn-danger container justify-content-center">Eliminar</a>
+
                             </div>
                         </div>
                     </div>
-                </div>`
-        })
-
-
-
-        let eliminar = document.createElement ("button");
-        eliminar.innerText= "Vaciar carrito"
-        eliminar.className= "eliminar"
-
-        cardCarrito.append(eliminar)
-
-        
+                </div>`})    
     }
 
+    vaciarCarrito(){
+        const botonVaciar = document.getElementById("eliminarCarrito")
+        botonVaciar.addEventListener("click",() => {
+        this.down()
+        this.clear()})
+    }
 
-    /*clickRestar(){
-        this.listCompra.map(product =>{
-            const {id} = product
-            const btnRemove = document.getElementById(`Art-${id}`)
-            btnRemove.addEventListener("click", ()=>{
-                controladorCarrito.down(product)
-                controladorCarrito.agregado(container_listCompra)
-            })
-        })
-    }   */
 }
 
 /*function eliminarProducto(id) {
@@ -470,6 +455,7 @@ controladorProductos.mostrar()
 controladorCarrito.loading()
 //evento
 controladorProductos.click(controladorCarrito)
+controladorCarrito.vaciarCarrito()
 
 
 if(localStorage.getItem("listCompra")){
