@@ -36,3 +36,8 @@ main {background-color: whitesmoke;}
 .carrusel {
     width: 100%;
 }
+
+.parrafo {
+    font-weight: 900;
+    font-style: oblique;
+}
