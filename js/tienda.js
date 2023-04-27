@@ -170,8 +170,35 @@ class CarritoController {
         const botonVaciar = document.getElementById("eliminarCarrito")
         botonVaciar.addEventListener("click",() => {
         this.down()
-        this.clear()})
+        this.clear()
+        this.saveStorage()})
     }
+
+    finalizarCompra(){
+        const terminarCompra = document.getElementById("terminarCompra")
+        terminarCompra.addEventListener("click",()=>{
+
+            if(this.listCompra.length === 0){
+                Swal.fire({
+                    title: "¡Tu carrito esta vacio agrega un producto!",
+                    text: "Puedes ver nuestros productos en la tienda",
+                    icon: "error",
+                    confirmButtonText: "Aceptar",
+                })
+            }else{
+                Swal.fire({
+                    position: 'top-center',
+                    icon: 'success',
+                    title: 'Muchas Gracias por tu compra',
+                    showConfirmButton: false,
+                    timer: 3500
+                })
+                this.down()
+                this.clear()
+                this.saveStorage()
+            }
+        })
+    }   
 }
 
 /*function eliminarProducto(id) {
@@ -193,7 +220,7 @@ controladorCarrito.loading()
 //evento
 controladorProductos.click(controladorCarrito)
 controladorCarrito.vaciarCarrito()
-
+controladorCarrito.finalizarCompra()
 
 if(localStorage.getItem("listCompra")){
     controladorCarrito.loading()
