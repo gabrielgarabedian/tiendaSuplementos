@@ -83,8 +83,29 @@ class CarritoController {
         this.container_listCompra = document.getElementById("container_listCompra")
     }
 
-    up(product){
+    /*up(product){
         this.listCompra.push(product)
+    }*/
+
+    up(product){
+        const artId = product.id
+            
+            
+            const existe = this.listCompra.some(product => product.id === artId)
+            if (existe){
+                this.clear()
+                const product = this.listCompra.map(product => {  
+                    if (product.id === product.id ){
+                        
+                        product.cantidad ++
+                        console.log(product.name + "unidades" +product.cantidad)
+                    }
+                })
+            }else{
+                this.listCompra.push(product)
+                console.log("se agrego")
+            }
+
     }
 
     down(product){
