@@ -211,9 +211,12 @@ class CarritoController {
                 Swal.fire({
                     position: 'top-center',
                     icon: 'success',
+                    imageUrl: '../assets/logo_final.png',
+                    imageWidth: 400,
+                    imageHeight: 400,
                     title: 'Muchas Gracias por tu compra',
                     showConfirmButton: false,
-                    timer: 3500
+                    timer: 4000
                 })
                 this.down()
                 this.clear()
