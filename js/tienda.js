@@ -126,6 +126,7 @@ class CarritoController {
         if (this.listCompra.length === 0){
             this.container_listCompra.innerHTML =`
             <p class="text-center text-primary parrafo">El carrito se encuentra vacio !!</p>`
+            precioTotal.innerText = this.listCompra.reduce((acc,product)=> acc + product.cantidad * product.price, "")
         }
     }
 
