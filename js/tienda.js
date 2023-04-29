@@ -1,5 +1,4 @@
 //prueba 
-
 const cardCarrito = document.getElementById("container_listCompra")
 const precioTotal = document.querySelector('#precioTotal')
 
@@ -13,8 +12,7 @@ class Product{
         this.cantidad= 1
         this.img= img 
         this.alt= alt
-    }
-        
+    }        
 }
 
 class ControllerProductos{
@@ -51,8 +49,7 @@ class ControllerProductos{
                     <a href="#" id="Art-${id}" class="btn btn-danger container justify-content-center " style=" background-color: rgb(252, 59, 1)">Agregar al carrito</a>
                 </div>
             </div> `
-        })
-        
+        })    
     }
 
     click(controladorCarrito){
@@ -60,21 +57,27 @@ class ControllerProductos{
             const {id} = product
             const btnUp= document.getElementById(`Art-${id}`)
             btnUp.addEventListener("click", ()=>{
-        
                 controladorCarrito.up(product)
                 controladorCarrito.saveStorage()
-                
-                controladorCarrito.agregado(container_listCompra)    
+                controladorCarrito.agregado(container_listCompra)
+                Toastify({
+                    text: `Se agrego ${product.name}\nal carrito`,
+                    duration: 1800,
+                    gravity: "bottom",
+                    position: "right",
+                    stopOnFocus: false,
+                    style: {
+                        background: "linear-gradient(to right, #ff2600, #96c93d)",
+                        opacity: 0.6,
+                      },
+                }).showToast();    
             })
         })
-
-
     }
         
     search(id){
         return this.productList.find(el => el.id == id)
-    }
-        
+    }   
 }
 
 class CarritoController {
@@ -105,7 +108,6 @@ class CarritoController {
                 this.listCompra.push(product)
                 console.log("se agrego")
             }
-
     }
 
     down(product){
@@ -191,6 +193,21 @@ class CarritoController {
     vaciarCarrito(){
         const botonVaciar = document.getElementById("eliminarCarrito")
         botonVaciar.addEventListener("click",() => {
+            if(this.listCompra.length === 0){
+                Swal.fire({
+                    title: "¡Tu carrito esta se encuentra vacio!",
+                    text: "Puedes ver nuestros productos en la tienda",
+                    icon: "error",
+                    confirmButtonText: "Aceptar",
+                })
+            }else{
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'se ha vaciado el carro correctamente',
+                showConfirmButton: false,
+                timer: 2500
+              })}
         this.down()
         this.clear()
         this.saveStorage()})
@@ -199,7 +216,6 @@ class CarritoController {
     finalizarCompra(){
         const terminarCompra = document.getElementById("terminarCompra")
         terminarCompra.addEventListener("click",()=>{
-
             if(this.listCompra.length === 0){
                 Swal.fire({
                     title: "¡Tu carrito esta vacio agrega un producto!",
@@ -216,7 +232,7 @@ class CarritoController {
                     imageHeight: 400,
                     title: 'Muchas Gracias por tu compra',
                     showConfirmButton: false,
-                    timer: 4000
+                    timer: 3700
                 })
                 this.down()
                 this.clear()
