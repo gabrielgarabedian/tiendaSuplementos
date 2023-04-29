@@ -208,7 +208,7 @@ class CarritoController {
                 showConfirmButton: false,
                 timer: 2500
               })}
-        precioTotal.innerText = this.listCompra.reduce((acc,product)=> acc + product.cantidad * product.price, "")
+        precioTotal.innerText = this.listCompra.reduce((acc,product)=> acc + product.cantidad * 0, 0)
         this.down()
         this.clear()
         this.saveStorage()})
