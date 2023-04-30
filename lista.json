@@ -1,0 +1,11 @@
+[
+    {"id":1,"name":"BCAA 228gr","description":"BCAA power instant de la marca HachSport, 60 servicios", "price":4500,"stock":10, "cantidad": 1,"img":"../assets/bcaa_power.webp","alt":"BCAA HardSport"},
+    {"id":2,"name":"MUTANT MASS 1.5kg","description":"Ganador de peso de la marca StarNutrition, 100 servicios", "price":6500,"stock":15, "cantidad": 1,"img":"../assets/mutant.webp","alt":"Mutant SN"},
+    {"id":3,"name":"PUMP 285g","description":"Pre-entreno de la marca StarNutrition, 30 servicios", "price":2500,"stock":23, "cantidad": 1,"img":"../assets/preentreno.webp","alt":"PUMP SN"},
+    {"id":4,"name":"Whey Protein WOMEN 500g","description":"Proteina para mujer de la marca Ultra Tech, 50 servicios", "price":8500,"stock":12, "cantidad": 1,"img":"../assets/proteinultra.webp","alt":"Mujer ultra"},
+    {"id":5,"name":"HYDROXY MAX ENA","description":"Quemador de grasa de la marca ENA, 100 servicios", "price":7300,"stock":5, "cantidad": 1,"img":"../assets/reductor.webp","alt":"quemador ENA"},
+    {"id":6,"name":"ANTIOXIDANTE comprimidos","description":"Antioxidante plus de la marca Vivatech, 30 comprimidos", "price":900,"stock":50, "cantidad": 1,"img":"../assets/vita.webp","alt":"Antioxidante"},
+    {"id":7,"name":"ENACCION","description":"Vitaminas de la marca StarNutrition, 60 capsulas", "price":5500,"stock":8, "cantidad": 1,"img":"../assets/vitamina.webp","alt":"Vitaminas"},
+    {"id":8,"name":"Whey Protein Platinum","description":"Proteina isolada de la marca StarNutrition, 30 servicios", "price":7200,"stock":19, "cantidad": 1,"img":"../assets/whey1.webp","alt":"proteina SN"},
+    {"id":9,"name":"Whey Protein Alto Rendimiento","description":"Proteina 7900 de alto rendimiento de la marca Gentech, 60 servicios", "price":8900,"stock":15, "cantidad": 1,"img":"../assets/wheyProte.webp","alt":"gentech"}
+]
