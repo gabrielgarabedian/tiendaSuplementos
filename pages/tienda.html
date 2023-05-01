@@ -40,18 +40,14 @@
                             <a class="nav-link active" aria-current="page" href="../index.html">Inicio</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Rutinas</a>
-                        </li>
-                        <li class="nav-item">
                             <a class="nav-link" href="./tienda.html">Tienda</a>
                         </li>
                     </ul>
                     <!-- Button trigger modal -->
                     <button type="button" class="btn btn" data-bs-toggle="modal"
                         data-bs-target="#staticBackdrop">
-                        <i class="fa-solid fa-cart-shopping fs-2 "></i>
+                        <i class="fa-solid fa-cart-shopping fs-5" id="carritoContenedor"> 0 </i>
                     </button>
-                    
                 </div>
             </div>
         </nav>
@@ -63,7 +59,6 @@
             <!-- cards de tienda-->
         </section>
     </main>
-
     <!-- Modal -->
     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
         aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -78,17 +73,16 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-success" data-bs-dismiss="modal">Seguir comprando</button>
-                    <button type="button" class="btn btn-success" data-bs-dismiss="modal" id="eliminarCarrito">Vaciar carrito</button>
+                    <button type="button" class="btn btn-warning" data-bs-dismiss="modal" id="eliminarCarrito">Vaciar carrito</button>
                     <button type="button" class="btn btn-danger" id="terminarCompra">Finalizar compra</button>            
                     <div class="modal-total">
-                        <span class="text-center">Precio a pagar: $</span>
+                        <span class="text-center">Precio a pagar $</span>
                         <p class="text-center" id="precioTotal"></p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
     <footer class=" text-center text-light fs-4 position-absolute " style="background-color: rgb(252, 59, 1); margin-bottom: 0; width: 100%;">
         <p class="p-2"> Realizado por Gabriel Garabedian</p>
     </footer>

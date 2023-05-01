@@ -1,5 +1,6 @@
 const cardCarrito = document.getElementById("container_listCompra")
 const precioTotal = document.querySelector('#precioTotal')
+const carritoContenedor = document.querySelector('#carritoContenedor')
 
 class Product{
     constructor(id,name,description,price,stock,img,alt){
@@ -42,7 +43,7 @@ class ControllerProducto{
     }
     mostrar(){
         this.productList.map(product => {
-            const {id,name,description,price,stock,img,alt} = product
+            const {id,name,description,price,img,alt} = product
             this.container_list.innerHTML += `
             <div class="card border-warning" style="width: 18rem;">
                 <img src="${img}" class="card-img-top" alt="${alt}">
@@ -120,6 +121,9 @@ class CarritoController {
         this.listCompra = []
         this.container_listCompra = document.getElementById("container_listCompra")
     }
+    verCarrito (){
+        carritoContenedor.textContent = this.listCompra.length 
+    }
     up(product){
             const artId = product.id
             const existe = this.listCompra.some(product => product.id === artId)
@@ -143,31 +147,30 @@ class CarritoController {
         if (this.listCompra.length === 0){
             this.container_listCompra.innerHTML =`
             <p class="text-center text-primary parrafo">El carrito se encuentra vacio !!</p>`
-            precioTotal.innerText = this.listCompra.reduce((acc,product)=> acc + product.cantidad * product.price, 0)
+            precioTotal.innerText = " "
         }
     }
     agregado(){
-            this.clear()
-            this.listCompra.map(product => { 
+        this.clear()
+        this.listCompra.map(product => { 
             this.container_listCompra.innerHTML +=`
             <div class="card mb-3" style="max-width: 540px;">
-            <div class="row g-0">
-                <div class="col-md-4">
-                    <img src="${product.img}" class="img-fluid rounded-start" alt="${product.alt}">
-                </div>
-                <div class="col-md-8">
-                    <div class="card-body">
-                        <h5 class="card-title">${product.name}</h5>
-    
-                        <a href="#" id="Articulo-${product.id}" class="identificador container justify-content-center " ></a>
-                        <p class="card-text"><small class="text-body-secondary">$${product.price}</small></p>
-                        <p class="card-text"><small class="text-body-secondary">Unidades: ${product.cantidad}</small></p>
-    
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img src="${product.img}" class="img-fluid rounded-start" alt="${product.alt}">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">${product.name}</h5>
+                            <a href="#" id="Articulo-${product.id}" class="identificador container justify-content-center " ></a>
+                            <p class="card-text"><small class="text-body-secondary">$${product.price}</small></p>
+                            <p class="card-text"><small class="text-body-secondary">Unidades: ${product.cantidad}</small></p>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>`})   
+            </div>`})   
         precioTotal.innerText = this.listCompra.reduce((acc,product)=> acc + product.cantidad * product.price, 0)
+        this.verCarrito()
     }    
     vaciarCarrito(){
         const botonVaciar = document.getElementById("eliminarCarrito")
@@ -184,13 +187,14 @@ class CarritoController {
             Swal.fire({
                 position: 'top-end',
                 icon: 'success',
-                title: 'se ha vaciado el carro correctamente',
+                title: 'Se ha vaciado el carro correctamente',
                 showConfirmButton: false,
                 timer: 2500
               })}
-        precioTotal.innerText = this.listCompra.reduce((acc,product)=> acc + product.cantidad * 0, 0)
+        precioTotal.innerText = " "
         this.down()
         this.clear()
+        this.verCarrito()
         this.saveStorage()})
     }
     finalizarCompra(){
@@ -217,6 +221,7 @@ class CarritoController {
                 })
                 this.down()
                 this.clear()
+                this.verCarrito()
                 this.saveStorage()
             }
         })
@@ -225,14 +230,12 @@ class CarritoController {
 
 const controladorProducto= new ControllerProducto()
 const controladorCarrito= new CarritoController()
-//carga los productos
+//carga los productos y muestra los productos
 controladorProducto.loader(controladorCarrito)
-//muestra los productos
-controladorProducto.mostrar()
+
 //storage
 controladorCarrito.loading()
 //evento
-controladorProducto.loader(controladorCarrito)
 controladorCarrito.vaciarCarrito()
 controladorCarrito.finalizarCompra()
 

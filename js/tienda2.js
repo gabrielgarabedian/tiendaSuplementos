@@ -24,7 +24,7 @@ class ControllerProductos{
     }
             
     loader() {
-        this.productList= [
+        /*this.productList= [
             new Product(1,"BCAA 228gr","BCAA power instant de la marca HachSport, 60 servicios", 4500,10,"../assets/bcaa_power.webp","BCAA HardSport"),
             new Product(2,"MUTANT MASS 1.5kg","Ganador de peso de la marca StarNutrition, 100 servicios", 6500,15,"../assets/mutant.webp","Mutant SN"),
             new Product(3,"PUMP 285g","Pre-entreno de la marca StarNutrition, 30 servicios", 2500,23,"../assets/preentreno.webp","PUMP SN"),
@@ -34,7 +34,7 @@ class ControllerProductos{
             new Product(7,"ENACCION","Vitaminas de la marca StarNutrition, 60 capsulas", 5500,8,"../assets/vitamina.webp","Vitaminas"),
             new Product(8,"Whey Protein Platinum","Proteina isolada de la marca StarNutrition, 30 servicios", 7200,19,"../assets/whey1.webp","proteina SN"),
             new Product(9,"Whey Protein Alto Rendimiento","Proteina 7900 de alto rendimiento de la marca Gentech, 60 servicios", 8900,15,"../assets/wheyProte.webp","gentech"),
-        ]
+        ]*/
     }  
         
     mostrar(){
