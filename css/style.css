@@ -4,6 +4,10 @@
     box-sizing: border-box;
 }
 
+body {
+    height: 100vh;
+}
+
 main {background-color: whitesmoke;}
 
 .contenedor{
@@ -40,4 +44,63 @@ main {background-color: whitesmoke;}
 .parrafo {
     font-weight: 900;
     font-style: oblique;
+}
+
+.contenedor_imc {
+    width: 50%;
+}
+
+.contenedorCalculadora {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.containerImc {
+    height: 600px;
+}
+
+.formulario {
+    padding: 10px;
+    height: 400px;
+}
+.leyenda {
+    text-align: center;
+    color: black;
+    font-size: 20px;
+    font-style: oblique;
+    margin-bottom: 15px;
+}
+
+.formularioPeso {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 40px;
+    gap: 15px;
+}
+
+.formularioAltura{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 15px;
+    gap: 12px;
+}
+
+.btnCalcular{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+    gap: 30px;
+}
+
+.contenedorResultado {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+    font-size: 30px;
+    color: lime;
 }

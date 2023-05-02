@@ -11,15 +11,15 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 
 <body>
     <header>
         <nav class="navbar navbar-expand-lg " style="background-color: rgb(252, 59, 1);">
             <div class="container-fluid">
-                <a class="navbar-brand" href="./index.html">
-                    <img src="./assets/logo.jpg" alt="">
+                <a class="navbar-brand" href="../index.html">
+                    <img src="../assets/logo.jpg" alt="">
                 </a>
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -30,13 +30,13 @@
                 <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0" >
                         <li class="nav-item">
-                          <a class="nav-link active" aria-current="page" href="./index.html">Inicio</a>
+                            <a class="nav-link active" aria-current="page" href="../index.html">Inicio</a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="./pages/tienda.html">Tienda</a>
+                            <a class="nav-link" href="../pages/tienda.html">Tienda</a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="./pages/calculadora.html">Calculadora IMC</a>
+                            <a class="nav-link" href="./calculadora.html">Calculadora IMC</a>
                         </li>
                     </ul>
                     
@@ -45,40 +45,52 @@
             </div>
         </nav>
     </header>
-    <main>  
-      <div class="contenedor">
-        <div class="bottom">
-          <div class="left">
-            &#60
-          </div>
-          <div class="right">
-            &#62
-          </div>
-        </div>
-          <img src="./assets/carrusel_1.png" alt="imagen" class="carrusel">
-      </div>
+    <main class="contenedorCalculadora">
+        
+        <section id="contenedor_img" class="contenedorImg justify-content  d-flex flex-wrap gap-5 mb-3 " style="margin-top: 20px;">
+            <img src="../assets/imc.svg" alt="imc">
+        </section>
+        
+        <section class="containerImc">
+            <form class="formulario">
+                <fieldset>
+                        <h1 class="text-center p-5" style="color:lime ">Calculadora de IMC </h1>
+                        <legend class="leyenda" > Consulta tu indice de masa muscular</legend>
+                        <label for="peso" class="formularioPeso">
+                            <span  class="text">Peso:</span>
+                            <input class="datos" type="text" name="" id="kilogramos" placeholder="Escriba aqui su peso" required>
+                        </label>
+                        <label for="altura" class="formularioAltura">
+                            <span class="text">Altura:</span>
+                            <input class="datos" type="text" name="" id="alturaIngresada" placeholder="ingrese su altura" required>
+                        </label>
+                        <div class="btnCalcular">
+                            <button id="calcular" > Calcular </button>
+                            <input type="reset" value="reset">
+                        </div>
+                    </fieldset>
+                </form>
 
-      <section id="container_index" class="container justify-content-center  d-flex flex-wrap gap-5 mb-3 p-5">
-        <div class="card " style="width: 18rem;">
-          <img src="./assets/envios.webp" class="card-img-top" alt="...">
-            <div class="card-body text-center p-5">
-              <a href="#" class="btn btn-success">Envios a Todo el Pais</a>
-            </div>
-        </div>
-        <div class="card " style="width: 18rem;">
-          <img src="./assets/asesoramiento.webp" class="card-img-top" alt="...">
-          <div class="card-body text-center p-5">
-            <a href="#" class="btn btn-success">Asesoramientos</a>
-          </div>
-        </div>
-        <div class="card " style="width: 18rem;">
-          <img src="./assets/medios-de-pago.png" class="card-img-top" alt="...">
-            <div class="card-body text-center p-5">
-              <a href="#" class="btn btn-success">Medios de Pagos</a>
-            </div>
-        </div>
-      </section>
+                <div id="resultadoImc" class="contenedorResultado">
+                    <div>
+                        <p>Tu valor es 
+                            <span id="value"></span>
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+        </section>
+
+
+
+
+
+
     </main>
+
+
+
     <footer class=" text-center text-light fs-4 position-absolute " style="background-color: rgb(252, 59, 1); margin-bottom: 0; width: 100%;">
         <p class="p-2"> Realizado por Gabriel Garabedian</p>
     </footer>

@@ -190,7 +190,7 @@ class CarritoController {
                 title: 'Se ha vaciado el carro correctamente',
                 showConfirmButton: false,
                 timer: 2500
-              })}
+            })}
         precioTotal.innerText = " "
         this.down()
         this.clear()
@@ -232,7 +232,6 @@ const controladorProducto= new ControllerProducto()
 const controladorCarrito= new CarritoController()
 //carga los productos y muestra los productos
 controladorProducto.loader(controladorCarrito)
-
 //storage
 controladorCarrito.loading()
 //evento
