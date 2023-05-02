@@ -8,7 +8,11 @@ body {
     height: 100vh;
 }
 
-main {background-color: whitesmoke;}
+main {
+    background-color: whitesmoke;
+    width: 100%;
+}
+
 
 .contenedor{
     width: 100%;
@@ -46,28 +50,36 @@ main {background-color: whitesmoke;}
     font-style: oblique;
 }
 
-.contenedor_imc {
-    width: 50%;
-}
-
 .contenedorCalculadora {
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 100%;
+}
+
+.contenedorImg {
+    width: 50%;
+    display: flex;
+    margin-left: 2px;
 }
 
 .containerImc {
-    height: 600px;
+    width: 50%;
+    height: 500px;
+    margin-left: 2px;
 }
 
 .formulario {
-    padding: 10px;
+    padding: 5px;
+    gap: 5px;
     height: 400px;
 }
+
 .leyenda {
     text-align: center;
     color: black;
-    font-size: 20px;
+    font-size: 15px;
     font-style: oblique;
     margin-bottom: 15px;
 }

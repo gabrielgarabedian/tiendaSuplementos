@@ -47,37 +47,37 @@
     </header>
     <main class="contenedorCalculadora">
         
-        <section id="contenedor_img" class="contenedorImg justify-content  d-flex flex-wrap gap-5 mb-3 " style="margin-top: 20px;">
-            <img src="../assets/imc.svg" alt="imc">
+        <section id="contenedorImg" class="contenedorImg justify-content-center  d-flex flex-wrap gap-5 mb-3 " style="margin-top: 20px;">
+            <img src="../assets/imc.png" alt="imc">
         </section>
         
         <section class="containerImc">
             <form class="formulario">
                 <fieldset>
-                        <h1 class="text-center p-5" style="color:lime ">Calculadora de IMC </h1>
+                        <h1 class="text-center p-4" style="color:lime ">Calculadora de IMC </h1>
                         <legend class="leyenda" > Consulta tu indice de masa muscular</legend>
                         <label for="peso" class="formularioPeso">
                             <span  class="text">Peso:</span>
-                            <input class="datos" type="text" name="" id="kilogramos" placeholder="Escriba aqui su peso" required>
+                            <input class="datos" type="text" name="" id="textPeso" placeholder="Escriba aqui en kilo" required>
                         </label>
                         <label for="altura" class="formularioAltura">
                             <span class="text">Altura:</span>
-                            <input class="datos" type="text" name="" id="alturaIngresada" placeholder="ingrese su altura" required>
+                            <input class="datos" type="text" name="" id="textAltura" placeholder="ingrese altura en metros" required>
                         </label>
                         <div class="btnCalcular">
-                            <button id="calcular" > Calcular </button>
-                            <input type="reset" value="reset">
+                            <button id="calcular" type="button"> Calcular </button>
+                            <input id="resetCalcular" type="reset" value="reset">
                         </div>
                     </fieldset>
+                    <div id="resultadoImc" class="contenedorResultado">
+                        <div>
+                            <p> 
+                                <span id="imcValue"></span>
+                            </p>
+                        </div>
+                    </div>
                 </form>
 
-                <div id="resultadoImc" class="contenedorResultado">
-                    <div>
-                        <p>Tu valor es 
-                            <span id="value"></span>
-                        </p>
-                    </div>
-                </div>
             </section>
 
         </section>
@@ -100,7 +100,7 @@
         crossorigin="anonymous">
     </script>
     <!--js-->
-    <script src="./js/app.js"></script>
+    <script src="../js/imc.js"></script>
     
 </body>
 
