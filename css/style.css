@@ -10,7 +10,7 @@ body {
 
 main {
     background-color: whitesmoke;
-    width: 100%;
+    
 }
 
 
@@ -72,7 +72,6 @@ main {
 
 .formulario {
     padding: 5px;
-    gap: 5px;
     height: 400px;
 }
 
