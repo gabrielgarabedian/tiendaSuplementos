@@ -127,13 +127,16 @@ class CarritoController {
     up(product){
         const productExiste = this.listCompra.find(producto => producto.id === product.id)
         if (productExiste){
-            productExiste.cantidad +=1;
+            productExiste.cantidad ++;
         }else{
             this.listCompra.push(product)
         }
     }
-    down(product){
+    down(){
         this.listCompra.length = 0
+    }
+    sinPrecio(){
+        precioTotal.innerText = " "
     }
     saveStorage(){
         localStorage.setItem("listCompra",JSON.stringify(this.listCompra))
@@ -142,28 +145,29 @@ class CarritoController {
         this.listCompra = JSON.parse(localStorage.getItem ("listCompra")) || []
     }
     clear(){
-        this.container_listCompra.innerHTML = ""
+        this.container_listCompra.innerHTML = " "
         if (this.listCompra.length === 0){
             this.container_listCompra.innerHTML =`
             <p class="text-center text-primary parrafo">El carrito se encuentra vacio !!</p>`
-            precioTotal.innerText = " "
         }
+        this.sinPrecio()
     }
     agregado(){
         this.clear()
         this.listCompra.map(product => { 
+            const {img,alt,name,id,price,cantidad} = product
             this.container_listCompra.innerHTML +=`
             <div class="card mb-3" style="max-width: 540px;">
                 <div class="row g-0">
                     <div class="col-md-4">
-                        <img src="${product.img}" class="img-fluid rounded-start" alt="${product.alt}">
+                        <img src="${img}" class="img-fluid rounded-start" alt="${alt}">
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
-                            <h5 class="card-title">${product.name}</h5>
-                            <a href="#" id="Articulo-${product.id}" class="identificador container justify-content-center " ></a>
-                            <p class="card-text"><small class="text-body-secondary">$${product.price}</small></p>
-                            <p class="card-text"><small class="text-body-secondary">Unidades: ${product.cantidad}</small></p>
+                            <h5 class="card-title">${name}</h5>
+                            <a href="#" id="Articulo-${id}" class="identificador container justify-content-center " ></a>
+                            <p class="card-text"><small class="text-body-secondary">$${price}</small></p>
+                            <p class="card-text"><small class="text-body-secondary">Unidades: ${cantidad}</small></p>
                         </div>
                     </div>
                 </div>
@@ -189,7 +193,7 @@ class CarritoController {
                 showConfirmButton: false,
                 timer: 2500
             })}
-        precioTotal.innerText = " "
+        this.sinPrecio()
         this.down()
         this.clear()
         this.verCarrito()
