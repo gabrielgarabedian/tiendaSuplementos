@@ -1,4 +1,4 @@
-const cardCarrito = document.getElementById("container_listCompra")
+///const cardCarrito = document.getElementById("container_listCompra")
 const precioTotal = document.querySelector('#precioTotal')
 const carritoContenedor = document.querySelector('#carritoContenedor')
 
@@ -125,13 +125,12 @@ class CarritoController {
         carritoContenedor.textContent = this.listCompra.length 
     }
     up(product){
-            const artId = product.id
-            const existe = this.listCompra.some(product => product.id === artId)
-            if (existe){
-                product.cantidad +=1
-            }else{
-                this.listCompra.push(product)
-            }
+        const productExiste = this.listCompra.find(producto => producto.id === product.id)
+        if (productExiste){
+            productExiste.cantidad +=1;
+        }else{
+            this.listCompra.push(product)
+        }
     }
     down(product){
         this.listCompra.length = 0
@@ -171,11 +170,10 @@ class CarritoController {
             </div>`})   
         precioTotal.innerText = this.listCompra.reduce((acc,product)=> acc + product.cantidad * product.price, 0)
         this.verCarrito()
-    }    
+    }   
     vaciarCarrito(){
         const botonVaciar = document.getElementById("eliminarCarrito")
         botonVaciar.addEventListener("click",() => {
-            
             if(this.listCompra.length === 0){
                 Swal.fire({
                     title: "¡Tu carrito esta se encuentra vacio!",
